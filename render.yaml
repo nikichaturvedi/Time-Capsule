@@ -1,4 +1,4 @@
-version: 1
+version: 20.15.1
 services:
   - type: web
     name: wanderway-web
