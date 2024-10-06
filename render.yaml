@@ -1,5 +1,5 @@
 services:
-  - type: web
+  - type: web services
     name: wanderway-web
     env: static
     buildCommand: npm run build
