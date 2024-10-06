@@ -6,7 +6,7 @@ const passport = require("passport");
 const { saveRedirectUrl } = require("../middleware.js");
 
 router.get("/signup", (req, res) =>{
-  res.render("users/signup.ejs");
+  res.render("users/signup.ejs" ,{currUser: req.user});
 
 });
 
@@ -32,7 +32,7 @@ router.post("/signup", wrapAsync(async(req, res) =>{
 
 
 router.get("/login", (req, res) =>{
-    res.render("users/login.ejs");
+    res.render("users/login.ejs",{currUser: req.user});
 });
 
 router.post("/login",
