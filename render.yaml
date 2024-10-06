@@ -1,7 +1,15 @@
+version: 1
 services:
-  - type: static_site
+  - type: web
     name: wanderway-web
-    env: static
-    buildCommand: npm run build
+    env: node
+    buildCommand: npm install
     startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
     plan: free
+    autoDeploy: true
+    regions:
+      - type: aws
+        region: oregon
