@@ -10,6 +10,4 @@ services:
         value: production
     plan: free
     autoDeploy: true
-    regions:
-      - type: aws
-        region: oregon
+   
