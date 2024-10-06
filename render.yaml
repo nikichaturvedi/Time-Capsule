@@ -10,5 +10,5 @@ services:
         value: production
     plan: free
     autoDeploy: no
-    regions: oregon
+    
    
