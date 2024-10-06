@@ -1,7 +1,7 @@
 services:
-  - type: web services
+  - type: web_services
     name: wanderway-web
-    env: static
+    env: node
     buildCommand: npm run build
     startCommand: npm start
     plan: free
