@@ -4,19 +4,25 @@
    #filters {
     display: flex;
     flex-wrap: wrap; 
+    justify-content: space-between;
     align-items: center;
+    padding: 10px 13px 10px 13px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    border-radius: 15px;
+    
    }
 
 
 .filter {
     display: flex;
     flex-direction: column;
+    /* justify-content: space-between; */
     align-items: center;
-    margin-right: 15px;
-    margin-top: 10px;
+    margin: 5px 10px 5px 10px;
     opacity: 0.6;
     text-align: center;
-    min-width: 50px; 
+    min-width: 30px; 
+    font-size: 13px;
 }
 
 .filter:hover{
@@ -31,7 +37,7 @@
 .tax-switch {
     border: 1px solid black;
     border-radius: 15px;
-    margin-left: auto;
+    margin-right: 10px;
     height: 2rem;
     padding: 10px;
     display: flex;
@@ -45,19 +51,31 @@
     cursor: pointer;
 }
 
+.filter div {
+    margin-right: 10px;
+    font-size: 1.3rem; /* Default icon size */
+}
 
-
-@media (max-width: 768px) {
+@media (max-width: 550px) {
     #filters {
         flex-direction: row; /* Switch to vertical layout on smaller screens */
     }
 
     .filter {
         flex-basis: auto; /* Allows items to take up full width when stacked vertically */
+        margin: 2px 1.5px 2px 1.5px;
+        font-size: 0.7rem; /* Smaller text */
+        padding: 5px; /* Less padding */
+        
+    }
+
+    .filter div {
+        font-size: 15px; /* Smaller icon size */
     }
 
     .tax-switch {
-        margin-top: 8px;
+        margin-bottom: 3px;
+        font-size: 0.7rem;
     }
 }
 </style>
