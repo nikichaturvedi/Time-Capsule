@@ -27,6 +27,10 @@ body{
 }
 
 
+.navbar-toggler-icon{
+    font-size: 10px;
+}
+
 /* footer */
 .f-info-links a{
     text-decoration: none;
