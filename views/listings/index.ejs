@@ -32,6 +32,7 @@
 
 .tax-info{
     display: inline;
+    display: none;
 }
 
 .tax-switch {
@@ -140,41 +141,47 @@
 
  
 
-    <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-2 mt-3" >
-        <% for(let listing of allListings){ %>
-            <a href="/listings/<%= listing._id %>" class="listing-link">
-                <div class="card col listing-card" >
-                    <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 15rem;">
-                    <div class="card-img-overlay">N</div>
-                    <div class="card-body">
-                      <p class="card-text">
+<div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-2 mt-3">
+    <% for(let listing of allListings){ %>
+        <a href="/listings/<%= listing._id %>" class="listing-link">
+            <div class="card col listing-card">
+                <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 15rem;">
+                <div class="card-img-overlay">N</div>
+                <div class="card-body">
+                    <p class="card-text">
                         <b><%= listing.title %></b><br>
-                       &#8377;  <%= listing.price.toLocaleString("en-IN") %> /night 
-                       <b class="tax-info">&nbsp; &nbsp; +18% GST</b>
+                        <span class="listing-price" data-original-price="<%= listing.price %>">&#8377; <span class="price-value"><%= listing.price.toLocaleString("en-IN") %></span> /night</span>
+                        <b class="tax-info">&nbsp; &nbsp; +18% GST</b>
                     </p>
-                    </div>
-                 </div>   
-            </a>
-        
-              <% } %>
-    </div>
-
-
+                </div>
+            </div>   
+        </a>
+    <% } %>
+</div>
 
     <script>
-        let taxSwitch = document.getElementById("flexSwitchCheckDefault");
-        taxSwitch.addEventListener("click", () =>{
-            let taxInfo = document.getElementsByClassName("tax-info");
-            for(info of taxInfo){
-              if(info.style.display != "inline"){
-                info.style.display = "inline";
-              } else {
-                info.style.display = "none";
-              }
-        }
-        });
-       
+       let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+
+taxSwitch.addEventListener("click", () => {
+    let taxInfo = document.getElementsByClassName("tax-info");
+    let listingPrices = document.getElementsByClassName("listing-price");
+
+    for (let info of taxInfo) {
+        info.style.display = taxSwitch.checked ? "inline" : "none";
+    }
+
+    for (let priceElement of listingPrices) {
+        let originalPrice = parseFloat(priceElement.getAttribute("data-original-price"));
+        let displayedPrice = taxSwitch.checked ? originalPrice * (1 - 0.18) : originalPrice; // Apply 18% discount
+        let formattedPrice = displayedPrice.toLocaleString("en-IN", { minimumFractionDigits: 2 });
+        priceElement.querySelector(".price-value").textContent = formattedPrice;
+    }
+}); 
     </script>
 
     
       
+
+
+
+    
