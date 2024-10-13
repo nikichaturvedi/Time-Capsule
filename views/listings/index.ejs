@@ -54,26 +54,26 @@
 
 .filter div {
     margin-right: 10px;
-    font-size: 1.3rem; /* Default icon size */
+    font-size: 1.3rem;
 }
 
 @media (max-width: 700px) {
     #filters {
-        flex-direction: row; /* Switch to vertical layout on smaller screens */
+        flex-direction: row; 
         padding: 2px;
     }
 
     .filter {
-        flex-basis: auto; /* Allows items to take up full width when stacked vertically */
+        flex-basis: auto; 
         margin: 2px 0 2px 0;
 
-        font-size: 0.7rem; /* Smaller text */
-        padding: 5px; /* Less padding */
+        font-size: 0.7rem; 
+        padding: 5px;
         
     }
 
     .filter div {
-        font-size: 15px; /* Smaller icon size */
+        font-size: 15px; 
     }
 
     .tax-switch {
@@ -172,7 +172,7 @@ taxSwitch.addEventListener("click", () => {
 
     for (let priceElement of listingPrices) {
         let originalPrice = parseFloat(priceElement.getAttribute("data-original-price"));
-        let displayedPrice = taxSwitch.checked ? originalPrice * (1 - 0.18) : originalPrice; // Apply 18% discount
+        let displayedPrice = taxSwitch.checked ? originalPrice * (1 + 0.18) : originalPrice; // Apply 18% discount
         let formattedPrice = displayedPrice.toLocaleString("en-IN", { minimumFractionDigits: 2 });
         priceElement.querySelector(".price-value").textContent = formattedPrice;
     }
