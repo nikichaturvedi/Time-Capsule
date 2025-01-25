@@ -17,19 +17,34 @@ body{
     background-color: white;
 }
 
-.fa-brands {
-    color: rgb(197, 38, 91);
-    font-size: 35px;
+#w{
+    color: #ed335f;
+    font-size: 25px;
+    text-decoration: line-through underline;
+    /* text-decoration: underline; */
+
+    
 }
+
+#ww{
+    font-size: 15px;
+    color:#358597;
+    text-decoration: line-through;
+}
+
 
 .nav-link{
     color: #222222 !important;
 }
 
-
 .navbar-toggler-icon{
     font-size: 10px;
 }
+
+.commentbox{
+    height: 200px;
+}
+
 
 /* footer */
 .f-info-links a{
@@ -105,14 +120,14 @@ body{
 
 /* new page */
 .add-btn{
-    background-color:rgb(197, 38, 91) !important ;
+    background-color: #ed335f !important ;
     border: none !important;
 }
 
 
 /* Edit page */
 .edit-btn{
-    background-color:rgb(197, 38, 91) !important ;
+    background-color: #ed335f !important ;
     border: none !important;
 }
 
@@ -127,3 +142,16 @@ body{
 }
 
 
+
+
+
+
+
+
+
+
+
+    
+
+    
+  
