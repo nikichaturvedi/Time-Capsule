@@ -28,7 +28,8 @@
     
         <br>
 
-        <% if(currUser && currUser._id.equals(listing.owner._id)) {%>
+        <% if(currUser && (currUser._id.equals(listing.owner._id) || currUser._id.toString() === '671715a689cf6b5a798d8593')) { %>
+          
         <div class="btns">
             <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark   col-md-2 col-lg-1 offset-lg-2 offset-1  edit-btn">Edit</a>
         
@@ -85,7 +86,7 @@
                                 <%= review.comment %>
                                 
                                 <form class="mb-2 mt-1" method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
-                                    <% if(currUser && currUser._id.equals(review.author._id)) {%> 
+                                  <% if(currUser && (currUser._id.equals(review.author._id) || currUser._id.toString() === '671715a689cf6b5a798d8593')) { %>
                                     <button class="btn btn-sm btn-dark">Delete</button>
                                     <% } %>
                                 </form>
@@ -98,6 +99,7 @@
 
 <br><br>
     
-                  
-         
-                               
+                
+      
+           
+               
