@@ -2,6 +2,8 @@
 
 <style>
    #filters {
+    /* height: 100px; */
+    
     display: flex;
     flex-wrap: wrap; 
     justify-content: space-between;
@@ -54,30 +56,30 @@
 
 .filter div {
     margin-right: 10px;
-    font-size: 1.3rem;
+    font-size: 1.3rem; /* Default icon size */
 }
 
 @media (max-width: 700px) {
     #filters {
-        flex-direction: row; 
+        flex-direction: row; /* Switch to vertical layout on smaller screens */
         padding: 2px;
     }
 
     .filter {
-        flex-basis: auto; 
-        margin: 2px 0 2px 0;
+        flex-basis: auto; /* Allows items to take up full width when stacked vertically */
+        margin: 2px 0px 2px 0px;
 
-        font-size: 0.7rem; 
-        padding: 5px;
+        font-size: 0.7rem; /* Smaller text */
+        padding: 2px 5px 0px 5px; /* Less padding */
         
     }
 
     .filter div {
-        font-size: 15px; 
+        font-size: 15px; /* Smaller icon size */
     }
 
     .tax-switch {
-        margin-bottom: 3px;
+        margin-bottom: 4px;
         font-size: 0.7rem;
     }
 }
@@ -126,10 +128,7 @@
         <p>Arctic</p>
     </div>
 
-    <!-- <div class="filter">
-        <div><i class="fa-solid fa-landmark-dome"></i></div>
-        <p>Domes</p>
-    </div>   -->
+    
 
    <div class="tax-switch">
     <div class="form-check-reverse form-switch">
@@ -141,7 +140,7 @@
 
  
 
-<div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-2 mt-3">
+<div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 mt-3">
     <% for(let listing of allListings){ %>
         <a href="/listings/<%= listing._id %>" class="listing-link">
             <div class="card col listing-card">
@@ -181,7 +180,3 @@ taxSwitch.addEventListener("click", () => {
 
     
       
-
-
-
-    
