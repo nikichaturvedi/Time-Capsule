@@ -20,7 +20,7 @@ router.post("/signup", wrapAsync(async(req, res) =>{
             if(err){
                 return next(err);
             }
-            req.flash("success", "Welcome to WanderWay!");
+            req.flash("success", "Welcome to Ww!");
             res.redirect("/listings");
         });
        
@@ -42,7 +42,7 @@ router.post("/login",
     failureFlash: true,
 }),
 async(req, res) =>{
-    req.flash( "success","Welcome back to WanderWay!");
+    req.flash( "success","Welcome back!");
     let redirectUrl = res.locals.redirectUrl || "/listings";
     res.redirect(redirectUrl);
 }
@@ -53,7 +53,7 @@ router.get("/logout", (req, res, next) =>{
         if(err){
            return next(err);
         }
-        req.flash("success", "you are logged out!");
+        req.flash("success", " logged out!");
         res.redirect("/listings");
     })
 });
