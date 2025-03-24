@@ -3,6 +3,7 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+   
 }
 
 
@@ -15,6 +16,7 @@ body{
 .navbar{
     height: 70px;
     background-color: white;
+     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
 #w{
@@ -32,6 +34,10 @@ body{
     text-decoration: line-through;
 }
 
+.map{
+    height: 300px;
+    width: 500px;
+}
 
 .nav-link{
     color: #222222 !important;
@@ -132,7 +138,6 @@ body{
 }
 
 
-/* Show page */
 .show-img{
     height: 30vh;
 }
@@ -142,16 +147,3 @@ body{
 }
 
 
-
-
-
-
-
-
-
-
-
-    
-
-    
-  

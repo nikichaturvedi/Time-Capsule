@@ -1,24 +1,117 @@
-<nav class="navbar navbar-expand-sm bg-body-light border-bottom sticky-top " >
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/listings"><i class="fa-brands fa-webflow " id="w"></i><i class="fa-brands fa-webflow " id="ww"></i></a>
-     
-      <a class="nav-link" href="/listings/new"><b>Add Your Place</b></a>
-      
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"  >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="background-color:  white">
-       
-        <div class="navbar-nav ms-auto">
+<style>
+  .btn-search {
+      background-color: #bd4f96;
+      color: aliceblue;
+      border-radius: 25px;
+      padding: 0 1rem;
+  }
+
+  .btn-search:hover {
+      background-color: #a83e82;
+      color: aliceblue;
+  }
+
+  .btn-search i {
+      display: inline;
+      margin-right: 5px;
+  }
+
+  .input-search {
+      border-radius: 25px;
+      text-align: center;
+      width: 300px;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 1rem; /* Normal size */
+}
+
+  .container-fluid {
+      display: flex;
+      align-items: center;
+  }
+
+  .navbar-brand {
+      margin-right: auto; /* Pushes search bar to center */
+  }
+
+  .search-container {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+  }
+
+  .navbar-nav {
+      margin-left: auto; /* Pushes navigation links to the right */
+  }
+
+  @media (max-width: 768px) {
+      .input-search {
+          width: 60%;
+          font-size: 14px;
+      }
+      .btn-search {
+          padding: 0.5rem 1rem;
+          font-size: 14px;
+      }
+      .navbar-nav .nav-link {
+        font-size: 0.85rem; /* Reduce font size */
+    }
+  }
+
+  @media (max-width: 400px) {
+      .input-search {
+          width: 60%;
+          font-size: 10px;
+      }
+      .btn-search {
+          padding: 0.3rem 0.75rem;
+          font-size: 10px;
+      }
+      .navbar-nav .nav-link {
+        font-size: 0.65rem; /* Reduce font size */
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+<div class="container-fluid">
+  <!-- Brand Icon (Aligned to Left) -->
+  <a class="navbar-brand" href="/listings">
+      <i class="fa-brands fa-fort-awesome fa-lg" style="color: #d81781;"></i>
+  </a>
+
+  <!-- Search Bar (Centered) -->
+  <div class="search-container">
+      <form class="d-flex" role="search">
+          <input class="form-control me-2 input-search" type="search" placeholder="Search destinations">
+          <button class="btn btn-search" type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i> Search
+          </button>
+      </form>
+  </div>
+
+  <!-- Navbar Toggler for Mobile -->
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navigation Links (Aligned to Right) -->
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="background-color: white;">
+      <div class="navbar-nav">
+          <a class="nav-link" href="/listings/new"><b>Add Your Recommendation</b></a>
           
-          <% if(!currUser){ %>
-          <a class="nav-link"  href="/signup"><b>Sign up</b></a>
-          <a class="nav-link" href="/login"><b>Log in</b></a>
+          <% if (!currUser) { %>
+              <a class="nav-link" href="/signup"><b>Sign up</b></a>
+              <a class="nav-link" href="/login"><b>Log in</b></a>
           <% } %>
-          <% if(currUser){%>
-          <a class="nav-link" href="/logout"><b>Log out</b></a>
+          
+          <% if (currUser) { %>
+              <a class="nav-link" href="/logout"><b>Log out</b></a>
           <% } %>
-        </div>
       </div>
-    </div>
-  </nav>
+  </div>
+</div>
+</nav>

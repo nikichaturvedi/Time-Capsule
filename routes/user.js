@@ -20,7 +20,7 @@ router.post("/signup", wrapAsync(async(req, res) =>{
             if(err){
                 return next(err);
             }
-            req.flash("success", "Welcome to Ww!");
+            req.flash("success", "Welcome to TimeCapsule!");
             res.redirect("/listings");
         });
        

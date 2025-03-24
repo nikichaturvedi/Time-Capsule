@@ -4,44 +4,31 @@
     <div class="col-lg-5 col-md-5 col-sm-7 col-9 max-auto offset-lg-2 offset-1">
         <h5><b><%= listing.title %></b></h5>
     </div>
-        <div class="card col-lg-5 col-md-6 col-sm-8 col-9 offset-lg-2 offset-1 max-auto my-1 show-card listing-card" >
-            
-                <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image">
-                <div class="card-body">
-                  <p class="card-text">
-                    Owned by <%= listing.owner.username %>
-                  </p>
-                  <p class="card-text">
-                    <%= listing.description %> 
-                  </p>
-                  <p class="card-text">
-                    &#8377; <%= listing.price.toLocaleString("en-IN") %>
-                  </p>
-                  <p class="card-text">
-                    <%= listing.location %>
-                  </p>
-                  <p class="card-text">
-                    <%= listing.country %>
-                  </p> 
-              </div>
+    <div class="card col-lg-5 col-md-6 col-sm-8 col-9 offset-lg-2 offset-1 max-auto my-1 show-card listing-card">
+        <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing_image">
+        <div class="card-body">
+            <p class="card-text">Posted by <%= listing.owner.username %></p>
+            <p class="card-text"><%= listing.description %></p>
+            <p class="card-text">City: <%= listing.city %></p>
+            <p class="card-text"><%= listing.location %></p>
+            <p class="card-text">Country: <%= listing.country %></p>
         </div>
-    
-        <br>
+    </div>
 
-        <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
-          
+    <br>
+
+    <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
         <div class="btns">
-            <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark   col-md-2 col-lg-1 offset-lg-2 offset-1  edit-btn">Edit</a>
-        
+            <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-md-2 col-lg-1 offset-lg-2 offset-1 edit-btn">Edit</a>
             <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
-               <button class="btn btn-dark offset-lg-5 offset-3  ">Delete</button>
+                <button class="btn btn-dark offset-lg-5 offset-3">Delete</button>
             </form>
         </div>
-        <% } %>
-    
-        <div class="col-10 offset-lg-2 offset-1 ">
-            <hr>
-            <% if(currUser){ %>
+    <% } %>
+
+    <div class="col-10 offset-lg-2 offset-1">
+        <hr>
+        <% if(currUser){ %>
             <h4>Leave a Review</h4>
             <form action="/listings/<%= listing.id %>/reviews" method="POST" novalidate class="needs-validation">
                 <div class="mb-1 mt-3">
@@ -58,44 +45,66 @@
                         <label for="first-rate4" title="Very good">4 stars</label>
                         <input type="radio" id="first-rate5" name="review[rating]" value="5" />
                         <label for="first-rate5" title="Amazing">5 stars</label>
-                      </fieldset>
+                    </fieldset>
                 </div>
-               
-                <div class="mb-3 mt-1 col-10  ">
+
+                <div class="mb-3 mt-1 col-10">
                     <label for="comment" class="form-label">Comments</label>
-                    <textarea name="review[comment]" id="comment" cols="5" rows="5" class="form-control " required></textarea>
-                    <div class="invalid-feedback">
-                        Please add submit some comments for review
-                    </div>
+                    <textarea name="review[comment]" id="comment" cols="5" rows="5" class="form-control" required></textarea>
+                    <div class="invalid-feedback">Please add some comments for review</div>
                 </div>
-                
+
                 <button class="btn btn-outline-dark">Submit</button>
             </form>
-            <hr>
-            <% } %>
-            <h3>All Reviews </h3>
-            <div class=" row ">
-                
-                    <% for(review of listing.reviews){ %>
-                        <div class="card  col-8 col-md-6 col-lg-5 ms-2 me-3 mb-3">
-                            <div class="card-body">
-                                <h6 class="card-title mt-2">@<%= review.author.username %></h6>
-                                <p class="starability-result card-text mb-1" data-rating="<%= review.rating %>">
-                                   stars
-                                </p>
-                                <%= review.comment %>
-                                
-                                <form class="mb-2 mt-1" method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
-                                  <% if(currUser && currUser._id.equals(review.author._id)) { %>
-                                    <button class="btn btn-sm btn-dark">Delete</button>
-                                    <% } %>
-                                </form>
-                            </div>
-                        </div>
-                        <% } %>
-            </div>
+            <br>
+        <% } %>
+
+        <h3>Where you'll be</h3>
+        <div id="map" style="height: 200px;" class="card col-lg-6 col-md-7 col-sm-10 col-10 max-auto my-1">
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const coordinates = <%- JSON.stringify(listing.geometry.coordinates) %>;
+
+                    if (!coordinates || coordinates.length !== 2) {
+                        console.error("No valid coordinates found for this listing.");
+                        return;
+                    }
+
+                    const map = L.map('map').setView([coordinates[1], coordinates[0]], 12); 
+
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: ''
+                    }).addTo(map);
+
+                    L.marker([coordinates[1], coordinates[0]]).addTo(map)
+                        .bindPopup('<%= listing.city %>🏠 Great Place to visit!')
+                        .openPopup();
+                });
+            </script>
         </div>
+
+        <hr>
+        <h3>All Reviews</h3>
+        <div class="row">
+            <% for(review of listing.reviews){ %>
+                <div class="card col-10 col-sm-8 col-md-5 col-lg-5 ms-2 me-3 mb-3">
+                    <div class="card-body">
+                        <h6 class="card-title mt-2">@<%= review.author.username %></h6>
+                        <p class="starability-result card-text mb-1" data-rating="<%= review.rating %>">stars</p>
+                        <%= review.comment %>
+
+                        <form class="mb-2 mt-1" method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                            <% if(currUser && currUser._id.equals(review.author._id)) { %>
+                                <button class="btn btn-sm btn-dark">Delete</button>
+                            <% } %>
+                        </form>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
 </div>
 
 <br><br>
-    
+
+       

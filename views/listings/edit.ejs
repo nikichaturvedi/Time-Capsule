@@ -25,24 +25,26 @@
             </div>
         
             <div class="row">
+                
                 <div class="mb-3 col-md-4 ">
-                    <label for="price" class="form-label">Price</label> 
-                    <input name="listing[price]" value="<%= listing.price %>" type="number" class="form-control" required>
-                    <div class="invalid-feedback">Price should be valid </div>
+                    <label for="city" class="form-label">City or State</label> 
+                    <input name="listing[city]" value="<%= listing.city %>" type="text" class="form-control" required>
+                    <div class="invalid-feedback">City should be valid </div>
+                </div>
+
+                <div class="mb-3  col-md-8">
+                    <label for="location" class="form-label">Location</label> 
+                    <input name="listing[location]" value="<%= listing.location %>" type="text" class="form-control" >
+                    <div class="invalid-feedback">Location should be valid </div>
                 </div>
                 
-                <div class="mb-3 col-md-8 ">
-                    <label for="country" class="form-label">Country</label> 
-                    <input name="listing[country]" value="<%= listing.country %>" type="text" class="form-control" required>
-                    <div class="invalid-feedback">Country name should be valid </div>
-                </div>
             </div>
             
-             
-            <div class="mb-3  ">
-                <label for="location" class="form-label">Location</label> 
-                <input name="listing[location]" value="<%= listing.location %>" type="text" class="form-control" required>
-                <div class="invalid-feedback">Location should be valid </div>
+            
+            <div class="mb-3 ">
+                <label for="country" class="form-label">Country</label> 
+                <input name="listing[country]" placeholder="country" type="text" class="form-control" required>
+                <div class="invalid-feedback">Country name should be valid </div>
             </div>
            
             <button class="btn btn-dark edit-btn">Edit</button>
@@ -52,5 +54,3 @@
 </div>
 
 <script src="/js/script.js"></script>
-
-    

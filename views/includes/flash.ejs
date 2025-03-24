@@ -1,12 +1,20 @@
-<%if(success && success.length){%>
-<div class="alert alert-success alert-dismissible fade show col-lg-5 col-md-5 col-sm-7 col-9 max-auto offset-lg-2 offset-1" role="alert" style="height: 10px; display: flex;  align-items: center; margin-top: 2px;">
-<%= success %>
-<button type="button" class="btn-close"   style="height: 10px; display: flex;  align-items: center; padding-bottom: 5px;" data-bs-dismiss="alert" aria-label="Close"></button>
-</div><%}%>
+<% if (success && success.length) { %>
+    <div class="alert alert-success alert-dismissible fade show col-lg-7 col-md-8 col-sm-12 col-12 mx-auto offset-lg-2 offset-md-1 d-flex align-items-center justify-content-between"
+         role="alert"
+         style="white-space: normal; word-wrap: break-word; margin-top: 4px; padding: 4px 8px; font-size: 13px; display: flex;">
+        <span style="flex-grow: 1; padding-right: 10px;"><%= success %></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                style="width: 16px; height: 16px; padding: 5px 8px; flex-shrink: 0;"></button>
+    </div>
+<% } %>
 
+<% if (error && error.length) { %>
+    <div class="alert alert-danger alert-dismissible fade show col-lg-7 col-md-8 col-sm-12 col-12 mx-auto offset-lg-2 offset-md-1 d-flex align-items-center justify-content-between"
+         role="alert"
+         style="white-space: normal; word-wrap: break-word; margin-top: 4px; padding: 4px 8px; font-size: 13px; display: flex;">
+        <span style="flex-grow: 1; padding-right: 10px;"><%= error %></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                style="width: 16px; height: 16px; padding: 5px 8px; flex-shrink: 0;"></button>
+    </div>
+<% } %>
 
-<%if(error && error.length){%>
-    <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert" style="height: 10px; display: flex;  align-items: center; margin-top: 2px;">
-    <%= error %>
-    <button type="button" class="btn-close"  style="height: 10px; display: flex;  align-items: center; padding-bottom: 5px;" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div><%}%>

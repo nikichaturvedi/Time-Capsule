@@ -1,6 +1,6 @@
 <% layout("/layouts/boilerplate") %>
 
-<style>
+<!-- <style>
    #filters {
     /* height: 100px; */
     
@@ -89,13 +89,13 @@
 <div id="filters">
 
     <div class="filter">
-        <div><i class="fa-solid fa-fire"></i></div>
-        <p>Trending</p>
+        <i class="fa-solid fa-gopuram"></i>
+        <p>Gopuram</p>
     </div>
 
     <div class="filter">
-        <div><i class="fa-solid fa-bed"></i></div>
-        <p>Room</p>
+        <i class="fa-sharp-duotone fa-regular fa-fort"></i>
+        <p>Duotone</p>
     </div>
 
     <div class="filter">
@@ -126,17 +126,17 @@
     <div class="filter">
         <div><i class="fa-solid fa-person-skiing"></i></div>
         <p>Arctic</p>
-    </div>
+    </div> -->
 
     
 
-   <div class="tax-switch">
+   <!-- <div class="tax-switch">
     <div class="form-check-reverse form-switch">
         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
         <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
       </div>
     </div>
-</div>
+</div> -->
 
  
 
@@ -148,9 +148,8 @@
                 <div class="card-img-overlay">N</div>
                 <div class="card-body">
                     <p class="card-text">
-                        <b><%= listing.title %></b><br>
-                        <span class="listing-price" data-original-price="<%= listing.price %>">&#8377; <span class="price-value"><%= listing.price.toLocaleString("en-IN") %></span> /night</span>
-                        <b class="tax-info">&nbsp; &nbsp; +18% GST</b>
+                        <b><%= listing.title %></b>
+                         (<%= listing.city%>)
                     </p>
                 </div>
             </div>   
@@ -169,14 +168,6 @@ taxSwitch.addEventListener("click", () => {
         info.style.display = taxSwitch.checked ? "inline" : "none";
     }
 
-    for (let priceElement of listingPrices) {
-        let originalPrice = parseFloat(priceElement.getAttribute("data-original-price"));
-        let displayedPrice = taxSwitch.checked ? originalPrice * (1 + 0.18) : originalPrice; // Apply 18% discount
-        let formattedPrice = displayedPrice.toLocaleString("en-IN", { minimumFractionDigits: 2 });
-        priceElement.querySelector(".price-value").textContent = formattedPrice;
-    }
+   
 }); 
     </script>
-
-    
-      
